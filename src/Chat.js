@@ -1,19 +1,28 @@
 import React from 'react';
-import chatEvents from './store';
-import participants from './store';
+import {chatEvents} from './store';
+import {participants} from './store';
+
 
 function Chat () {
+    
     return (
-        participants.map(person => {
-            <div className='participants-list'>
+        chatEvents.map(event => {
+            let timestamp= new Date(event.timestamp);
+            let time= new Date(event.time);
+            <div className='message'>
                 <img src= {person.avatar}/>
-            <div className= 'participant-info'>
-                <h6 class= 'participant-name'>{person.name}</h6>
+            <div className= 'message-body'>
+                if(event.message){
+                <h6 className= 'message-body-name'>{person.name}</h6>
+                <span className= 'message-body-time'>{time}</span>
+                <div className= 'message-body-content'>
+                    <p>{event.message}</p>
+                </div>
+                }
             </div>
+            
             </div>
-            <div className='messages'>
-
-            </div>
+    
         }))
     
 }
